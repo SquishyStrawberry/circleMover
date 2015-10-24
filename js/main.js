@@ -12,11 +12,17 @@ document.addEventListener("DOMContentLoaded", function() {
         40: "down"
     };
     
+    // 32 is a magic value, I have no idea why it's required.
+    keyConstants['a'.charCodeAt(0) - 32] = "left";
+    keyConstants['d'.charCodeAt(0) - 32] = "right";
+    keyConstants['w'.charCodeAt(0) - 32] = "up";
+    keyConstants['s'.charCodeAt(0) - 32] = "down";
+
     var player = {
         x: 0,
         y: 0,
         radius: 100,
-        speed: 10,
+        speed: 100,
         stroke: "#ff0000",
         fill: "#e1e1e1"
     };
@@ -30,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     window.addEventListener("keydown", function(e) {
+        console.log(e.keyCode, e.key);
+        console.info(keyConstants);
         if (e.keyCode in keyConstants) {
            keys[keyConstants[e.keyCode]] = true; 
         }
